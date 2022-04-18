@@ -4,9 +4,9 @@
     {
         static void Main(string[] args)
         {
-            GroupModel groupModel = null;//new GroupModel();
-            bool online1 = groupModel?.IsOnline == false;
-            bool online2 = !groupModel.IsOnlineCheck();
+            Model groupModel = null;//new GroupModel();
+            bool isOnline1 = groupModel?.IsOnline == false;
+            bool isOnline2 = !groupModel.IsOnlineCheck();
 
         }
     }

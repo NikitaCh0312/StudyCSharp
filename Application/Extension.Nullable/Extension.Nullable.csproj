@@ -44,8 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GroupModel.cs" />
-    <Compile Include="GroupModelExtension.cs" />
+    <Compile Include="Model.cs" />
+    <Compile Include="ModelExtension.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
