@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -17,22 +18,21 @@ namespace DeadlockStudy.Views
         private async void ButtonClicked(object sender, RoutedEventArgs e)
         {
             //заходим в метод
-            Task tsk = Function();
+            var tsk = Function();
             //блокируем UI поток и ждем когда он выполнится
-            tsk.Wait();
+            int result = tsk.Result;
         }
 
-        private async Task Function()
+        private async Task<int> Function()
         {
             //тут выполнение кода возвращается в ButtonClicked в метод .Wait()
-            await Task.Factory.StartNew(() =>
-            {
-                //запускается задача
-                Thread.Sleep(2000);
-                //задача ожидает пока освободится поток, который ее запустил
-                //но поток который ее запустил метод ButtonClicked, ожидает когда эта задача 
-                //освободится, получаем deadlock 
-            });
+            //запускается задача
+            //задача ожидает пока освободится поток, который ее запустил
+            //но поток который ее запустил метод ButtonClicked, ожидает когда эта задача 
+            //освободится, получаем deadlock 
+            await Task.Delay(TimeSpan.FromSeconds(2)).ConfigureAwait(true);
+
+            return 10;
 
         }
 
