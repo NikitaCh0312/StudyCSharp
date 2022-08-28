@@ -1,2 +1,10 @@
 ﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+
+using System.Data;
+using BenchmarkDotNet.Running;
+
+var summary = BenchmarkRunner.Run(typeof(Program).Assembly);
+Console.ReadLine();
+
+
+
